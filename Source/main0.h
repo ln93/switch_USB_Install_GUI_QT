@@ -25,6 +25,7 @@ public:
     bool stopped;
 signals:
     void Send_COUT(QString COUT);
+    void Send_ProgressBar(int progress);
 
 
 

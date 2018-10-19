@@ -14,6 +14,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     connect(this,SIGNAL(emitpath(QStringList)),&threadinstall,SLOT(installall(QStringList)));
     connect(&threadinstall,SIGNAL(Send_COUT(QString)),this,SLOT(GetCout(QString)));
+    connect(&threadinstall,SIGNAL(Send_ProgressBar(int)),this,SLOT(GetProgressBar(int)));
+    ui->InstallprogressBar->setVisible(0);
+    ui->label_2->setVisible(0);
     threadinstall.start();
 }
 
@@ -37,9 +40,20 @@ void MainWindow::on_fopenpushButton_clicked()
 
 void MainWindow::on_RuninstallpushButton_clicked()
 {
+    if(nsppath.size()==0)
+    {
+        GetCout(QString::fromUtf8("尚未选择nsp文件!"));
+        return;
+     }
     emit emitpath(nsppath);
+     ui->InstallprogressBar->setVisible(1);
+     ui->label_2->setVisible(1);
 }
  void MainWindow::GetCout(QString COUT)
  {
      ui->CoutLabel->setText(COUT);
+ }
+ void MainWindow::GetProgressBar(int progress)
+ {
+     ui->InstallprogressBar->setValue(progress);
  }

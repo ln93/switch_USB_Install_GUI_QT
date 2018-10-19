@@ -226,7 +226,8 @@ void  main0::file_range_cmd(usb_dev_handle *dev, unsigned char *cmd_size) {
 		unsigned char *nsp_value = new unsigned char[read_size];
 		fread(nsp_value, sizeof(unsigned char), read_size, f);
 		avg = curr_off / end_off;
-        Send_COUT(QString::fromLocal8Bit("·"));
+        //Send_COUT(QString::fromLocal8Bit("·"));
+        Send_ProgressBar(100*curr_off/nsp_size_int);
 		usb_write(dev, nsp_value, read_size);
 		curr_off += read_size;	
 		delete[]nsp_value;

@@ -18,6 +18,7 @@ public:
 
 public slots:
     void GetCout(QString COUT);
+    void GetProgressBar(int progress);
 private slots:
     void on_fopenpushButton_clicked();
 
