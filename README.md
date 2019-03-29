@@ -5,5 +5,4 @@ Re-implied the usb_install.py by c++(@GPU)&QT5.8(by myself)
 
 Code could be dirty, please be kind.
 
-My blog:http://olddriver.iok.la:4000/blog
 
